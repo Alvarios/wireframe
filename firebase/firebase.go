@@ -10,6 +10,8 @@ import (
 	"time"
 )
 
+const timeOutDelay = time.Duration(10)
+
 /*SetupFirebaseFromEnv create a new *auth.Client, using env variable You must init
 FIREBASE_KEY_PATH environment variable to the "root directory path"
 to the credentials file
@@ -19,19 +21,13 @@ func SetupFirebaseFromEnv() *auth.Client {
 	if keyPath := os.Getenv("FIREBASE_KEY_PATH"); keyPath != "" {
 		opt := option.WithCredentialsFile(keyPath)
 		//Firebase admin SDK initialization
-		ctx, ctxErr := context.WithTimeout(context.Background(), time.Second * 10)
-		if ctxErr != nil {
-			panic(ctxErr)
-		}
+		ctx, _ := context.WithTimeout(context.Background(), time.Second*timeOutDelay)
 		app, err := firebase.NewApp(ctx, nil, opt)
 		if err != nil {
 			panic(err)
 		}
 		//Firebase Auth
-		authCtx, authCtxErr := context.WithTimeout(context.Background(), time.Second * 10)
-		if authCtxErr != nil {
-			panic(authCtxErr)
-		}
+		authCtx, _ := context.WithTimeout(context.Background(), time.Second*timeOutDelay)
 		auth, err := app.Auth(authCtx)
 		if err != nil {
 			panic(err)
@@ -51,19 +47,13 @@ func SetupFirebase(keyPath string) *auth.Client {
 	if keyPath := os.Getenv(keyPath); keyPath != "" {
 		opt := option.WithCredentialsFile(keyPath)
 		//Firebase admin SDK initialization
-		ctx, ctxErr := context.WithTimeout(context.Background(), time.Second * 10)
-		if ctxErr != nil {
-			panic(ctxErr)
-		}
+		ctx, _ := context.WithTimeout(context.Background(), time.Second*timeOutDelay)
 		app, err := firebase.NewApp(ctx, nil, opt)
 		if err != nil {
 			panic(err)
 		}
 		//Firebase Auth
-		authCtx, authCtxErr := context.WithTimeout(context.Background(), time.Second * 10)
-		if authCtxErr != nil {
-			panic(authCtxErr)
-		}
+		authCtx, _ := context.WithTimeout(context.Background(), time.Second*timeOutDelay)
 		auth, err := app.Auth(authCtx)
 		if err != nil {
 			panic(err)

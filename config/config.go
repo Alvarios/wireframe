@@ -30,12 +30,12 @@ type  struct {
 type Database struct {
 	Dialect   string `default:"MangoDB"`
 	Debug     bool   `default:"false"`
-	Username  string `required:"true" default:"root"`
-	Password  string `required:"true"`
-	Host      string `required:"true"`
-	DebugHost string `required:"true"`
-	Port      string `required:"true"`
-	Dbname    string `required:"true"`
+	Username  string `required:"false" default:"root"`
+	Password  string `required:"false"`
+	Host      string `required:"required"`
+	DebugHost string `required:"false"`
+	Port      string `required:"false"`
+	Dbname    string `required:"false"`
 	SSLMode   bool   `default:"true"`
 }
 

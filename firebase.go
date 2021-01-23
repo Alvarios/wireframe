@@ -10,7 +10,6 @@ import (
 	"time"
 )
 
-
 /*SetupFirebaseFromEnv create a new *auth.Client, using env variable You must init
 FIREBASE_KEY_PATH environment variable to the "root directory path"
 to the credentials file

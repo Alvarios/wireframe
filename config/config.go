@@ -7,6 +7,11 @@ import (
 
 const configPathKey = "CONFIG_PATH"
 
+//ServerModeRelease - value for release mode
+const ServerModeRelease = "RELEASE"
+
+//ServerModeDebug - value for debug mode
+const ServerModeDebug = "DEBUG"
 
 /*Database struct build to load all the database config variables
 type  struct {
@@ -94,4 +99,3 @@ func NewConfig(configPath string) *Configuration {
 	}
 	return config
 }
-

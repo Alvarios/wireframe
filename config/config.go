@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"github.com/jinzhu/configor"
 	"os"
 )
@@ -20,7 +21,7 @@ type  struct {
 	Username  string `required:"true" default:"root"` // Username is the database owner id
 	Password  string `required:"true"`	// Password is the database (identified by Dbname) password
 	Host      string `required:"true"` // Host localhost or custom value
-	DebugHost string `required:"true"` //DebugHost is similar to Host, it's an optionnal value use by the server when it's in DEBUG Mode
+	DebugHost string `required:"true"` //DebugHost is similar to Host, it's an optional value use by the server when it's in DEBUG Mode
 	Port      string `required:"true"` // Port is the db service connection port
 	Dbname    string `required:"true"` // Dbname is the database name
 	SSLMode   bool   `default:"true"`  // SSLMode is a boolean. It can be set to true if you want to activate the SSL encryption mode
@@ -83,8 +84,12 @@ env an variable CONFIG_PATH
 */
 func NewConfigFromEnv() *Configuration {
 	envPathVar := os.Getenv(configPathKey)
+	if envPathVar == "" {
+		panic("Empty en path var")
+	}
 	config := &Configuration{}
 	if err := configor.Load(config, envPathVar); err != nil {
+		fmt.Printf("Config error : %v || path find in env was : %s \n", err.Error(), envPathVar)
 		panic(err.Error())
 	}
 	return config

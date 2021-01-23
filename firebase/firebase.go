@@ -39,12 +39,12 @@ func SetupFirebaseFromEnv() *auth.Client {
 		log.Printf("Firebase client setup :) \n")
 		return auth
 	}
-	log.Printf("Failed to setup firebase. \n")
+	log.Printf("Failed to setup wireframe. \n")
 	return nil
 }
 
 /*SetupFirebase create a new *auth.Client. keyPath is the path to the
-firebase json file.
+wireframe json file.
 */
 func SetupFirebase(keyPath string) *auth.Client {
 	log.Printf("Setting up Firebase client.. \n")
@@ -71,6 +71,6 @@ func SetupFirebase(keyPath string) *auth.Client {
 		log.Printf("Firebase client setup :) \n")
 		return auth
 	}
-	log.Printf("Failed to setup firebase. \n")
+	log.Printf("Failed to setup wireframe. \n")
 	return nil
 }

@@ -9,10 +9,10 @@ import (
 const configPathKey = "CONFIG_PATH"
 
 //ServerModeRelease - value for release mode
-const ServerModeRelease = "RELEASE"
+const ServerModeRelease = "release"
 
 //ServerModeDebug - value for debug mode
-const ServerModeDebug = "DEBUG"
+const ServerModeDebug = "debug"
 
 /*Database struct build to load all the database config variables
 type  struct {

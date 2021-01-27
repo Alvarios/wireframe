@@ -12,12 +12,20 @@ import (
 aws environment variables REGION, PROFILE, AWS_SECRET_ACCESS_KEY, AWS_ACCESS_KEY_ID.
 */
 func NewClient() *cloudsearchdomain.CloudSearchDomain {
+	cloudSearchEndpoint := os.Getenv("CLOUD_SEARCH_ENDPOINT")
+	if cloudSearchEndpoint == "" {
+		panic("CLOUD_SEARCH_ENDPOINT env is empty. It must contains the endpoint value")
+	}
 	region := os.Getenv("REGION")
+	if region == "" {
+		panic("REGION env variable is empty. It must contains the region of the CloudSearch instance")
+	}
 	profile := os.Getenv("PROFILE")
 	cred := credentials.NewEnvCredentials()
 	config := aws.Config{
 		Credentials: cred,
 		Region:      aws.String(region),
+		Endpoint:    aws.String(cloudSearchEndpoint),
 	}
 	sess := session.Must(session.NewSessionWithOptions(session.Options{
 		Profile: profile,

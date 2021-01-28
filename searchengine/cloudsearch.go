@@ -43,14 +43,14 @@ func NewClient() *cloudsearchdomain.CloudSearchDomain {
 type SearchEngine interface {
 	// Suggest take a string in parameter, this string contains the query of the user. The method will return
 	// suggestions based on this phrase.
-	Suggest(Suggest string) (string, error)
+	Suggest(Suggest string, page int64) (string, error)
 
 	//SimpleSearch take a query search all text and text-array fields for the specified string.
 	//Search for phrases, individual terms, and prefixes.
-	SimpleSearch(string) (*cloudsearchdomain.SearchOutput, error)
+	SimpleSearch(string, page int64) (*cloudsearchdomain.SearchOutput, error)
 
 	//StructuredSearch search specific fields, construct compound queries using
 	//Boolean operators, and use advanced features such as term boosting and
 	//proximity searching.
-	StructuredSearch(string) (*cloudsearchdomain.SearchOutput, error)
+	StructuredSearch(string, page int64) (*cloudsearchdomain.SearchOutput, error)
 }

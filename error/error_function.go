@@ -19,12 +19,13 @@ type HiveError struct {
 */
 func NewHiveBadRequestError(ctx iris.Context, detail string) *HiveError {
 	ctx.StatusCode(iris.StatusBadRequest)
-	return &HiveError{
+	err := &HiveError{
 		Path:   ctx.RouteName(),
 		Status: http.StatusBadRequest,
 		Title:  http.StatusText(http.StatusBadRequest),
 		Detail: detail,
 	}
+	return err
 }
 
 /*NewHiveUnauthorizedError - create a new HiveError for a 401 themisError code

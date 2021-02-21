@@ -15,7 +15,7 @@ type JWTMiddlewareProtocol interface {
 
 /*JWTMiddleware Middleware struct that contains a *auth.Client that is used to check if the JWT token
 // present in the header are valid Token. This middleware is use only if the server used firebase to
-// authentificate user
+// authenticate user
 */
 type JWTMiddleware struct {
 	FirebaseAuthClient *auth.Client

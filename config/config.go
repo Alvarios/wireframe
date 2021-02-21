@@ -85,7 +85,7 @@ env an variable CONFIG_PATH
 func NewConfigFromEnv() *Configuration {
 	envPathVar := os.Getenv(configPathKey)
 	if envPathVar == "" {
-		panic("Empty en path var")
+		panic(configPathKey + " is empty. this env variable must be init with the path to the json config file")
 	}
 	config := &Configuration{}
 	if err := configor.Load(config, envPathVar); err != nil {
